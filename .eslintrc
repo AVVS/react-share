@@ -16,7 +16,7 @@
     "strict": 0,
     "quotes": [2, "single"],
     "comma-dangle": [2, "never"],
-    "max-len": [1, 80, 4],
+    "max-len": [1, 120, 4],
     "no-trailing-spaces": [2, { skipBlankLines: true }],
     "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
     "no-unused-vars": [1, {"vars": "all", "args": "after-used"}],

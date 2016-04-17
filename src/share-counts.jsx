@@ -8,7 +8,6 @@ import {
   getPinterestShareCount
 } from './share-count-getters';
 
-
 const SocialMediaShareCount = React.createClass({
   propTypes: {
     children: React.PropTypes.func,

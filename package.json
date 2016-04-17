@@ -1,11 +1,11 @@
 {
   "name": "react-share",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "Easy social media share buttons and share counts.",
   "main": "./build/react-share.js",
   "scripts": {
     "build": "npm run lint && npm run build-src && npm run build-demos",
-    "build-src": "babel ./src --out-dir ./build",
+    "build-src": "./node_modules/.bin/babel-cli ./src --out-dir ./build",
     "build-demos": "NODE_ENV=production webpack -p --config webpack.demos.config.js",
     "run-demos": "NODE_ENV=development webpack-dev-server --config webpack.demos.config.js --content-base demos/ --progress --colors",
     "lint": "eslint --ext .jsx ./src ./demos"
@@ -33,9 +33,14 @@
   "license": "MIT",
   "devDependencies": {
     "babel": "^5.8.23",
+    "babel-cli": "^6.7.5",
     "babel-core": "^5.8.25",
-    "babel-eslint": "^4.1.3",
+    "babel-eslint": "^6.0.0",
     "babel-loader": "^5.3.2",
+    "babel-preset-airbnb": "^1.1.1",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
     "eslint": "^1.7.3",
     "eslint-config-airbnb": "^0.1.0",
     "eslint-loader": "^1.1.0",
@@ -49,7 +54,9 @@
   },
   "dependencies": {
     "jsonp": "^0.2.0",
-    "platform": "^1.3.0"
+    "platform": "^1.3.0",
+    "react-social-icons": "github:avvs/react-social-icons#v2.0.0",
+    "babel-plugin-transform-runtime": "^6.7.5"
   },
   "peerDependencies": {
     "react": "0.13.x || 0.14.x || 15.x.x"

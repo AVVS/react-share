@@ -1,8 +1,6 @@
 import jsonp from 'jsonp';
 import platform from 'platform';
-
 import { objectToGetParams } from './utils';
-
 
 export function getFacebookShareCount(shareUrl, callback) {
   const fql = encodeURIComponent('select like_count, share_count from ' +
