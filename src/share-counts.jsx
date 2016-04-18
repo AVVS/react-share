@@ -1,74 +1,68 @@
 /* eslint-disable react/no-multi-comp */
-import React from 'react';
+import React, { Component } from 'react';
+import cx from 'classnames';
 
 import {
   getFacebookShareCount,
   getGooglePlusShareCount,
   getLinkedinShareCount,
-  getPinterestShareCount
+  getPinterestShareCount,
 } from './share-count-getters';
 
-const SocialMediaShareCount = React.createClass({
-  propTypes: {
+class SocialMediaShareCount extends Component {
+  static propTypes = {
     children: React.PropTypes.func,
     className: React.PropTypes.string,
     getCount: React.PropTypes.func,
-    url: React.PropTypes.string.isRequired
-  },
+    url: React.PropTypes.string.isRequired,
+  };
 
-  getInitialState() {
-    return {
-      count: 0
-    };
-  },
+  constructor(props) {
+    super(props);
+    this.state = { count: 0, isLoading: false };
 
-  componentDidMount() {
-    if (this.props.getCount) {
-      this.setState({
-        isLoading: true
-      });
-
-      this.props.getCount(this.props.url, count => {
-        if (this.isMounted()) {
-          this.setState({
-            count,
-            isLoading: false
-          });
-        }
-      });
+    if (props.getCount) {
+      this.state.isLoading = this.loadCounter();
     }
-  },
+  }
+
+  componentWillUnmount() {
+    if (typeof this.state.isLoading === 'function') {
+      // cancel request
+      this.state.isLoading();
+    }
+  }
+
+  loadCounter() {
+    this.props.getCount(this.props.url, count => {
+      this.setState({
+        count,
+        isLoading: false,
+      });
+    });
+  }
 
   render() {
-    const {
-      count,
-      isLoading
-    } = this.state;
-
-    const {
-      children
-    } = this.props;
-
-    const className = `SocialMediaShareCount ${this.props.className || ''}`;
+    const { count, isLoading } = this.state;
+    const { children, ...rest } = this.props;
+    const className = cx('sm-share-count', this.props.className);
 
     const render = children || function renderCount(shareCount) {
       return shareCount;
     };
 
     return (
-      <div {...this.props} className={className}>
+      <div {...rest} className={className}>
         {!isLoading && render(count || 0)}
       </div>
     );
   }
-});
+}
 
 function shareCountFactory(getCount) {
-  return React.createClass({
-    render() {
-      return <SocialMediaShareCount getCount={getCount} {...this.props} />;
-    }
-  });
+  return function Counter(props) {
+    return <SocialMediaShareCount getCount={getCount} {...props} />;
+  };
 }
 
 export const FacebookShareCount = shareCountFactory(getFacebookShareCount);

@@ -1,2 +1,2 @@
-export * as ShareButtons from './share-buttons';
+export ShareButton from './share-button';
 export * as ShareCounts from './share-counts';

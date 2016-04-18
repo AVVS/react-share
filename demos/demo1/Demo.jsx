@@ -1,43 +1,29 @@
 import React from 'react';
-import {
-  ShareButtons,
-  ShareCounts,
-  generateShareIcon
-} from 'react-share';
-
+import { ShareButton, ShareCounts } from 'react-share';
 import exampleImage from './react-share-pin-example.png';
 
-const {
-  PinterestShareButton
-} = ShareButtons;
+const { PinterestShareCount } = ShareCounts;
 
-const {
-  PinterestShareCount
-} = ShareCounts;
+function Demo() {
+  const shareUrl = String(window.location);
+  const media = `${shareUrl}/${exampleImage}`;
 
-const PinterestIcon = generateShareIcon('pinterest');
+  return (
+    <div className="Demo__container">
+      <div className="Demo__some-network">
+        <ShareButton
+          url={shareUrl}
+          opts={{ media }}
+          network="pinterest"
+          className="Demo__some-network__share-button"
+        />
 
-const Demo = React.createClass({
-  render() {
-    const shareUrl = String(window.location);
-    const media = `${shareUrl}/${exampleImage}`;
-
-    return (
-      <div className="Demo__container">
-        <div className="Demo__some-network">
-          <PinterestShareButton
-            url={shareUrl}
-            media={media}
-            className="Demo__some-network__share-button">
-            <PinterestIcon size={32} round={true} />
-          </PinterestShareButton>
-
-          <PinterestShareCount url={shareUrl}
-            className="Demo__some-network__share-count"/>
-        </div>
+        <PinterestShareCount url={shareUrl}
+          className="Demo__some-network__share-count"
+        />
       </div>
-    );
-  }
-});
+    </div>
+  );
+}
 
 export default Demo;

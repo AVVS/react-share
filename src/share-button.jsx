@@ -12,18 +12,18 @@ export default class ShareButton extends Component {
     className: PropTypes.string,
     network: PropTypes.oneOf(supportedNetworks),
     url: PropTypes.string.isRequired,
-    opts: PropTypes.object
+    opts: PropTypes.object,
   };
-
-  get link() {
-    const { url, opts, network } = this.props;
-    return supportedNetworks[network](url, opts);
-  }
 
   onClick = (e) => {
     e.preventDefault();
-    windowOpen(this.link);
+    windowOpen(this.link());
     return false;
+  }
+
+  link() {
+    const { url, opts, network } = this.props;
+    return links[network](url, opts);
   }
 
   render() {
@@ -32,13 +32,13 @@ export default class ShareButton extends Component {
       network,
       url, // eslint-disable-line no-unused-vars
       opts, // eslint-disable-line no-unused-vars
-      ...rest
+      ...rest,
     } = this.props;
 
     return (
       <SocialIcon {...rest}
         onClick={this.onClick}
-        url={this.link}
+        url={this.link()}
         network={network}
         className={cx(className, 'sm-share-button')}
       />
