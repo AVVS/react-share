@@ -12,7 +12,7 @@ fs.readdirSync('node_modules')
 module.exports = {
   devtool: 'sourcemap',
 
-  entry: './src/index.js',
+  entry: './src/react-share.jsx',
 
   target: 'node',
 
@@ -27,7 +27,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: 'babel',
         exclude: path.resolve(__dirname, 'node_modules'),
       },
