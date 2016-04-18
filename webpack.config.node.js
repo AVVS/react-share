@@ -34,6 +34,11 @@ module.exports = {
     ],
   },
 
+  resolve: {
+    root: [path.resolve('./src')],
+    extensions: ['', '.js', '.jsx'],
+  },
+
   plugins: [
     new webpack.BannerPlugin('require("source-map-support").install();',
                              { raw: true, entryOnly: false }),
