@@ -1,0 +1,69 @@
+{
+  "name": "react-share",
+  "version": "2.1.1",
+  "description": "Easy social media share buttons and share counts.",
+  "main": "./react-share.js",
+  "scripts": {
+    "build": "npm run lint && npm run build-src && npm run build-demos",
+    "build-src": "./node_modules/.bin/babel -d ./lib ./src",
+    "build-demos": "NODE_ENV=production webpack -p --config webpack.demos.config.js",
+    "run-demos": "NODE_ENV=development webpack-dev-server --config webpack.demos.config.js --content-base demos/ --progress --colors",
+    "lint": "eslint --ext .jsx ./src ./demos",
+    "prepublish": "npm run build-src",
+    "publish": "./scripts/release.sh"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "react-component",
+    "social",
+    "media",
+    "social-media",
+    "share",
+    "button",
+    "count"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nygardk/react-share"
+  },
+  "author": {
+    "name": "Klaus Nygård",
+    "email": "klaus.nygard@gmail.com",
+    "url": "http://klausnygard.fi"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.7.5",
+    "babel-core": "^6.7.6",
+    "babel-eslint": "^6.0.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-class-properties": "^6.6.0",
+    "babel-preset-airbnb": "^1.1.1",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^7.0.0",
+    "eslint-loader": "^1.1.0",
+    "eslint-plugin-jsx-a11y": "^0.6.2",
+    "eslint-plugin-react": "^4.0.1",
+    "file-loader": "^0.8.5",
+    "json": "^9.0.3",
+    "react": "^0.14.8",
+    "react-dom": "^0.14.8",
+    "react-hot-loader": "^1.3.0",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "jsonp": "^0.2.0",
+    "platform": "^1.3.0",
+    "react-social-icons": "github:avvs/react-social-icons#v2.1.1",
+    "babel-plugin-transform-runtime": "^6.7.5"
+  },
+  "peerDependencies": {
+    "react": "0.13.x || 0.14.x || 15.x.x"
+  }
+}
