@@ -1,6 +1,6 @@
 {
   "name": "react-share",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Easy social media share buttons and share counts.",
   "main": "./react-share.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "build-demos": "NODE_ENV=production webpack -p --config webpack.demos.config.js",
     "run-demos": "NODE_ENV=development webpack-dev-server --config webpack.demos.config.js --content-base demos/ --progress --colors",
     "lint": "eslint --ext .jsx ./src ./demos",
-    "prepublish": "npm run build-src"
+    "prepublish": "npm run build-src",
+    "publish": "./scripts/release.sh"
   },
   "keywords": [
     "react",
@@ -59,7 +60,7 @@
   "dependencies": {
     "jsonp": "^0.2.0",
     "platform": "^1.3.0",
-    "react-social-icons": "github:avvs/react-social-icons#v2.1.0",
+    "react-social-icons": "github:avvs/react-social-icons#v2.1.1",
     "babel-plugin-transform-runtime": "^6.7.5"
   },
   "peerDependencies": {
