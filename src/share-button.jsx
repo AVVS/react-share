@@ -36,7 +36,8 @@ export default class ShareButton extends Component {
     } = this.props;
 
     return (
-      <SocialIcon {...rest}
+      <SocialIcon
+        {...rest}
         onClick={this.onClick}
         url={this.link()}
         network={network}

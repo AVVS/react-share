@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShareButton, ShareCounts } from 'react-share';
+import { ShareButton, ShareCounts } from 'react-share'; // eslint-disable-line import/no-unresolved
 
 const {
   FacebookShareCount,

@@ -44,7 +44,8 @@ class SocialMediaShareCount extends Component {
 
   render() {
     const { count, isLoading } = this.state;
-    const { children, ...rest } = this.props;
+    // eslint-disable-next-line no-unused-vars
+    const { children, getCount, url, ...rest } = this.props;
     const className = cx('sm-share-count', this.props.className);
 
     const render = children || function renderCount(shareCount) {
